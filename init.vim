@@ -41,6 +41,8 @@ Plug 'preservim/nerdtree'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'rstacruz/vim-closer'
 Plug 'preservim/nerdcommenter'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'tpope/vim-endwise'
 call plug#end()
 
 "let g:sonokai_style = 'andromeda'
