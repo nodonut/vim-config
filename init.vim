@@ -9,6 +9,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set termguicolors
+set hlsearch
 set clipboard+=unnamedplus
 "set background=dark
 
@@ -43,6 +44,7 @@ Plug 'rstacruz/vim-closer'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
 call plug#end()
 
 "let g:sonokai_style = 'andromeda'
