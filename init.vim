@@ -25,6 +25,9 @@ Plug 'tomasr/molokai'
 Plug 'sainnhe/edge'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mxw/vim-jsx'
+Plug 'yuezk/vim-js'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'
@@ -36,7 +39,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'pangloss/vim-javascript'
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -45,6 +47,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 "let g:sonokai_style = 'andromeda'
@@ -98,3 +101,4 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']
