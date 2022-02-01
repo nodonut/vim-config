@@ -11,7 +11,7 @@ set smartindent
 set termguicolors
 set hlsearch
 set clipboard+=unnamedplus
-"set background=dark
+set background=dark
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
@@ -49,7 +49,7 @@ call plug#end()
 
 "let g:sonokai_style = 'andromeda'
 "let g:sonokai_enable_italic = 1
-colorscheme onehalfdark
+colorscheme onedarkhc
 
 " remaps
 let mapleader = " "
