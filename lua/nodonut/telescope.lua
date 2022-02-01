@@ -4,5 +4,6 @@ require("telescope").setup({
       local tail = require("telescope.utils").path_tail(path)
       return string.format("%s (%s)", tail, path)
     end,
+    file_ignore_patterns = {"node_modules"}
   }
 })
