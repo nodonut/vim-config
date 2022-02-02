@@ -48,6 +48,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'jiangmiao/auto-pairs'
+Plug 'w0rp/ale'
 call plug#end()
 
 "let g:sonokai_style = 'andromeda'
