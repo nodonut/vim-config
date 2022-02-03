@@ -6,7 +6,8 @@
     "json",
     "javascriptreact",
     "typescript.tsx",
-    "ruby"
+    "ruby",
+    "lua"
   ],
   "suggest.maxCompleteItemCount": 20,
   "tsserver.watchOptions": {

@@ -14,6 +14,7 @@ set clipboard+=unnamedplus
 set background=dark
 
 call plug#begin('~/.vim/plugged')
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
 Plug 'junegunn/fzf.vim'
 Plug 'pacokwon/onedarkhc.vim' 
@@ -38,7 +39,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'sheerun/vim-polyglot'
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -49,6 +49,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
+Plug 'rafamadriz/friendly-snippets'
 call plug#end()
 
 "let g:sonokai_style = 'andromeda'
