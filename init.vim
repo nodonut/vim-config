@@ -51,6 +51,7 @@ Plug 'tpope/vim-rails'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 
