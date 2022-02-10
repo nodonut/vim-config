@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
 Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
 Plug 'pacokwon/onedarkhc.vim' 
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'joshdick/onedark.vim'
@@ -52,9 +53,15 @@ Plug 'w0rp/ale'
 Plug 'rafamadriz/friendly-snippets'
 call plug#end()
 
+
 "let g:sonokai_style = 'andromeda'
 "let g:sonokai_enable_italic = 1
-colorscheme onedarkhc
+let g:gruvbox_termcolors=16
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_improved_strings=0
+
+colorscheme gruvbox
+
 
 " remaps
 let mapleader = " "
@@ -104,3 +111,7 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']
+
+
+" RuboCop keybind
+nnoremap <leader>rb :RuboCop<CR>
