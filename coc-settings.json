@@ -8,7 +8,10 @@
     "typescript.tsx",
     "ruby",
     "lua",
-    "python"
+    "python",
+    "css",
+    "markdown",
+    "Dockerfile"
   ],
   "suggest.maxCompleteItemCount": 20,
   "tsserver.watchOptions": {

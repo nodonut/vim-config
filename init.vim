@@ -1,6 +1,7 @@
 scriptencoding utf-8
 syntax on
 set cursorline
+set nohlsearch
 set number
 set relativenumber
 set tabstop=4 softtabstop=4
@@ -52,6 +53,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'sbdchd/neoformat'
+Plug 'SirVer/ultisnips'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
 
@@ -63,6 +70,8 @@ let g:gruvbox_improved_strings=0
 
 colorscheme gruvbox
 
+" Neoformat Options
+let g:neoformat_try_node_exe = 1
 
 " remaps
 let mapleader = " "
@@ -72,6 +81,7 @@ nnoremap <leader>x :!chmod +x %<CR>
 " NERDTree remaps
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nmap <leader>nf :NERDTreeFind<CR>
+
 " coc remaps
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -94,8 +104,9 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Quickfix List remaps
-nnoremap <leader>cn :cnext<CR>
-nnoremap <leader>cp :cprev<CR>
+nnoremap <leader>qo :copen<CR>
+nnoremap <leader>qn :cnext<CR>
+nnoremap <leader>qp :cprev<CR>
 
 " Coc snippets
 imap <C-l> <Plug>(coc-snippets-expand)
