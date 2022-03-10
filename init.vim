@@ -1,3 +1,4 @@
+autocmd FileType scss setl iskeyword+=@-@
 scriptencoding utf-8
 syntax on
 set cursorline
@@ -14,6 +15,9 @@ set hlsearch
 set clipboard+=unnamedplus
 set background=dark
 
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
@@ -25,6 +29,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'sainnhe/sonokai'
 Plug 'tomasr/molokai'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/edge'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mxw/vim-jsx'
@@ -49,12 +54,14 @@ Plug 'preservim/nerdcommenter'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sbdchd/neoformat'
 Plug 'SirVer/ultisnips'
+Plug 'APZelos/blamer.nvim'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
@@ -65,9 +72,8 @@ call plug#end()
 "let g:sonokai_style = 'andromeda'
 "let g:sonokai_enable_italic = 1
 let g:gruvbox_termcolors=16
-let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_contrast_dark="medium"
 let g:gruvbox_improved_strings=0
-
 colorscheme gruvbox
 
 " Neoformat Options
@@ -77,10 +83,16 @@ let g:neoformat_try_node_exe = 1
 let mapleader = " "
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>x :!chmod +x %<CR>
+nnoremap <leader>sc :let @/ = ""<CR>
+nnoremap <leader>rl :let @+ = expand("%")<CR>
 
 " NERDTree remaps
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nmap <leader>nf :NERDTreeFind<CR>
+
+" NERDTree customization
+let NERDTreeWinPos="right"
+let NERDTreeWinSize=45
 
 " coc remaps
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -127,3 +139,40 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json'
 
 " RuboCop keybind
 nnoremap <leader>rb :RuboCop<CR>
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" blamer maps
+nnoremap <leader>gb :BlamerToggle<CR>
+let g:blamer_relative_time = 1

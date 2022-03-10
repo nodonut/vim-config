@@ -11,8 +11,20 @@
     "python",
     "css",
     "markdown",
-    "Dockerfile"
+    "Dockerfile",
+    "sass",
+    "less",
+    "scss",
+    "python"
   ],
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.local/bin/black",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "html": "html"
+  },
+  "codeLens.enable": false,
   "suggest.maxCompleteItemCount": 20,
   "tsserver.watchOptions": {
     "watchFile": "useFsEventsOnParentDirectory",
