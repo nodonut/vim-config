@@ -86,6 +86,9 @@ nnoremap <leader>x :!chmod +x %<CR>
 nnoremap <leader>sc :let @/ = ""<CR>
 nnoremap <leader>rl :let @+ = expand("%")<CR>
 nnoremap <leader>gs :G<CR>
+nnoremap <leader>gf :diffget //2<CR>
+nnoremap <leader>gj :diffget //3<CR>
+nnoremap <leader>gc :Git commit<CR>
 
 " NERDTree remaps
 nnoremap <leader>nt :NERDTreeToggle<CR>
