@@ -85,6 +85,7 @@ nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>x :!chmod +x %<CR>
 nnoremap <leader>sc :let @/ = ""<CR>
 nnoremap <leader>rl :let @+ = expand("%")<CR>
+nnoremap <leader>gs :G<CR>
 
 " NERDTree remaps
 nnoremap <leader>nt :NERDTreeToggle<CR>
