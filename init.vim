@@ -62,6 +62,7 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sbdchd/neoformat'
 Plug 'SirVer/ultisnips'
 Plug 'APZelos/blamer.nvim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
@@ -180,3 +181,5 @@ endfunction
 " blamer maps
 nnoremap <leader>gb :BlamerToggle<CR>
 let g:blamer_relative_time = 1
+
+autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()

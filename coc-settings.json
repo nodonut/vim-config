@@ -15,7 +15,9 @@
     "sass",
     "less",
     "scss",
-    "python"
+    "python",
+    "go",
+    "html"
   ],
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
