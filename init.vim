@@ -58,7 +58,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sbdchd/neoformat'
 Plug 'SirVer/ultisnips'
 Plug 'APZelos/blamer.nvim'
@@ -90,6 +89,7 @@ nnoremap <leader>gs :G<CR>
 nnoremap <leader>gf :diffget //2<CR>
 nnoremap <leader>gj :diffget //3<CR>
 nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gb :Git blame<CR>
 
 " NERDTree remaps
 nnoremap <leader>nt :NERDTreeToggle<CR>
@@ -177,9 +177,5 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" blamer maps
-nnoremap <leader>gb :BlamerToggle<CR>
-let g:blamer_relative_time = 1
 
 autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
