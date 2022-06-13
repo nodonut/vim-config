@@ -1,1 +1,1 @@
-require('nodonut.telescope')
+require("nodonut.telescope")

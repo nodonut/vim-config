@@ -79,6 +79,8 @@ colorscheme gruvbox
 " Neoformat Options
 let g:neoformat_try_node_exe = 1
 
+lua require('nodonut')
+
 " remaps
 let mapleader = " "
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
@@ -119,6 +121,8 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fc :lua require'telescope.builtin'.colorscheme()<cr>
+nnoremap <C-l> :lua require'telescope.builtin'.lsp_document_symbols()<cr>
 
 " Quickfix List remaps
 nnoremap <leader>qo :copen<CR>
