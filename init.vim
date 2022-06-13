@@ -32,8 +32,6 @@ Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/edge'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'
