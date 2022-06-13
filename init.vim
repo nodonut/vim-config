@@ -32,8 +32,6 @@ Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/edge'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mxw/vim-jsx'
-Plug 'yuezk/vim-js'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'heavenshell/vim-jsdoc', {
@@ -45,7 +43,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -79,7 +76,6 @@ colorscheme gruvbox
 " Neoformat Options
 let g:neoformat_try_node_exe = 1
 
-lua require('nodonut')
 
 " remaps
 let mapleader = " "
@@ -116,13 +112,16 @@ let g:jsdoc_lehre_path = '~/.nvm/versions/node/v14.4.0/lib/node_modules/lehre/bi
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 
+lua require('nodonut')
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fc :lua require'telescope.builtin'.colorscheme()<cr>
-nnoremap <C-l> :lua require'telescope.builtin'.lsp_document_symbols()<cr>
+nnoremap <C-l> :lua require('telescope.builtin').lsp_document_symbols()<cr>
+nnoremap <leader>ga :lua require'nodonut.telescope'.git_branches()<cr>
+nnoremap <leader>ts :lua require'nodonut.telescope'.git_status()<cr>
 
 " Quickfix List remaps
 nnoremap <leader>qo :copen<CR>
@@ -183,3 +182,5 @@ function! s:check_back_space() abort
 endfunction
 
 autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }

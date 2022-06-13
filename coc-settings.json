@@ -17,7 +17,8 @@
     "scss",
     "python",
     "go",
-    "html"
+    "html",
+    "lua"
   ],
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
