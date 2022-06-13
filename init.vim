@@ -120,6 +120,7 @@ nnoremap <leader>fc :lua require'telescope.builtin'.colorscheme()<cr>
 nnoremap <C-l> :lua require('telescope.builtin').lsp_document_symbols()<cr>
 nnoremap <leader>ga :lua require'nodonut.telescope'.git_branches()<cr>
 nnoremap <leader>ts :lua require'nodonut.telescope'.git_status()<cr>
+nnoremap <leader>lf :lua require'telescope.builtin'.treesitter()<cr>
 
 " Quickfix List remaps
 nnoremap <leader>qo :copen<CR>
