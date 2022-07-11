@@ -19,6 +19,8 @@ set background=dark
 set shortmess+=c
 
 call plug#begin('~/.vim/plugged')
+Plug 'folke/trouble.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
 Plug 'junegunn/fzf.vim'
@@ -32,16 +34,12 @@ Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/edge'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'heavenshell/vim-jsdoc', {
-  \ 'for': ['javascript', 'javascript.jsx','typescript'],
-  \ 'do': 'make install'
-\}
 Plug 'vim-airline/vim-airline'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'rstacruz/vim-closer'
@@ -61,6 +59,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+"Plug 'simrat39/symbols-outline.nvim'
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 call plug#end()
 
 
@@ -73,7 +74,7 @@ colorscheme gruvbox
 
 " Neoformat Options
 let g:neoformat_try_node_exe = 1
-
+let g:coc_disable_transparent_cursor = 1
 
 " remaps
 let mapleader = " "
@@ -86,6 +87,7 @@ nnoremap <leader>gf :diffget //2<CR>
 nnoremap <leader>gj :diffget //3<CR>
 nnoremap <leader>gc :Git commit<CR>
 nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>P :CocDiagnostics<CR>
 
 " NERDTree remaps
 nnoremap <leader>nt :NERDTreeToggle<CR>
@@ -100,15 +102,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" === vim-jsdoc shortcuts ==="
-" Generate jsdoc for function under cursor
-nmap <leader>z :JsDoc<CR>
-
-let g:jsdoc_lehre_path = '~/.nvm/versions/node/v14.4.0/lib/node_modules/lehre/bin/lehre'
-
 " Prettier 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 
 lua require('nodonut')
 
@@ -173,3 +168,4 @@ endfunction
 autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+nmap <silent> gL <cmd>call coc#rpc#request('fillDiagnostics', [bufnr('%')])<CR><cmd>Trouble loclist<CR>`
