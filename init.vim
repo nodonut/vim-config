@@ -1,4 +1,7 @@
+" Auto Commands
 autocmd FileType scss setl iskeyword+=@-@
+autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+
 scriptencoding utf-8
 syntax on
 set cursorline
@@ -39,21 +42,20 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'rstacruz/vim-closer'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-endwise'
+"Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
-Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'sbdchd/neoformat'
 Plug 'SirVer/ultisnips'
-Plug 'APZelos/blamer.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -63,7 +65,6 @@ Plug 'prettier/vim-prettier', {
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 call plug#end()
-
 
 "let g:sonokai_style = 'andromeda'
 "let g:sonokai_enable_italic = 1
@@ -87,7 +88,6 @@ nnoremap <leader>gf :diffget //2<CR>
 nnoremap <leader>gj :diffget //3<CR>
 nnoremap <leader>gc :Git commit<CR>
 nnoremap <leader>gb :Git blame<CR>
-nnoremap <leader>P :CocDiagnostics<CR>
 
 " NERDTree remaps
 nnoremap <leader>nt :NERDTreeToggle<CR>
@@ -96,6 +96,7 @@ nmap <leader>nf :NERDTreeFind<CR>
 " NERDTree customization
 let NERDTreeWinPos="right"
 let NERDTreeWinSize=45
+let NERDTreeShowHidden=1
 
 " coc remaps
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -105,7 +106,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Prettier 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-lua require('nodonut')
 
 " Quickfix List remaps
 nnoremap <leader>qo :copen<CR>
@@ -113,7 +113,6 @@ nnoremap <leader>qn :cnext<CR>
 nnoremap <leader>qp :cprev<CR>
 
 " Coc snippets
-imap <C-l> <Plug>(coc-snippets-expand)
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -160,12 +159,7 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
-
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 nmap <silent> gL <cmd>call coc#rpc#request('fillDiagnostics', [bufnr('%')])<CR><cmd>Trouble loclist<CR>`
+
+lua require'nodonut'
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }

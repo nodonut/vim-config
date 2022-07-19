@@ -39,6 +39,5 @@
   "solargraph.diagnostics": true,
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
-  "solargraph.hover": true,
-  "diagnostic.checkCurrentLine": true
+  "solargraph.hover": true
 }
